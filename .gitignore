@@ -1,0 +1,5 @@
+# Archivos objeto y ejecutables de C
+*.o
+*.exe
+*.out
+simulador
