@@ -18,40 +18,65 @@ void Menu() {
 int main() {
     int opcion;
     bool datos_cargados = false; // Variable bandera para el control del program 
+    Estado_Orion nave; // Variable temporal para testear la carga de datos .. 
+    
+    // DECLARACIONES AGREGADAS PARA EL HISTORIAL
+    Estado_Orion historial[MAX_HISTORIAL]; 
+    int cant_historial = 0;
+
+    Inicializar_Simulacion(&nave);
 
     do {
         Menu();
         // Lectura temporal... Luego se tiene que reemplazar x leerEntero(1, 6)
-        scanf("%d", &opcion); 
-
+        opcion = leerEntero(1, 6); 
+    
         switch (opcion) {
             case 1:
-                printf("\n[Modulo en proceso ... Aca ingresan los datos por teclado]\n");
-                datos_cargados = true; // Simulamos que se cargaron los datos, temporalmente para probar 
+                LimpiarPantalla();
+                printf("\n--- CARGA DE PARAMETROS ---\n");
+
+                // Uso de la funcion LeerFlotante y evitamos ingresos de ceros y letras 
+                printf("Tiempo de desaceleracion (s): ");
+                nave.t_desacel = leerFlotante(0.0, 5000.0); 
+
+                printf("Profundidad de hundimiento (m): ");
+                nave.prof_hundimiento = leerFlotante(0.0, 50.0);
+                
+                printf("Angulo de reingreso (grados): ");
+                nave.ang_reingreso = leerFlotante(0.0, 90.0);
+
+                datos_cargados = true;
+                printf("\n[Parametros cargados exitosamente]\n");
                 break;
             case 2:
+                LimpiarPantalla();
                 if (datos_cargados) {
-                    printf("\n[Modulo en construccion: Calculo de Fisica y Trabajo]\n");
+                    Calcular_Trabajo(&nave); // <- PUNTO Y COMA AGREGADO
+                    Guardar_Historial(historial, &cant_historial, nave);
                 } else {
                     printf("\nError: Debe ingresar parametros primero (Opcion 1).\n");
                 }
                 break;
             case 3:
+                LimpiarPantalla();
                 if (datos_cargados) {
-                    printf("\n[Modulo en construccion: Calculo de Impacto en Oceano]\n");
+                    Fuerza_Impacto(&nave);
                 } else {
                     printf("\nError: Debe ingresar parametros primero (Opcion 1).\n");
                 }
                 break;
             case 4:
+                LimpiarPantalla();
                 if (datos_cargados) {
-                    printf("\n[Modulo en construccion: Evaluacion de Angulo]\n");
+                    Evaluar_Angulo(nave); // Usamos el paso por valor 
                 } else {
                     printf("\nError: Debe ingresar parametros primero (Opcion 1).\n");
                 }
                 break;
             case 5:
-                printf("\n[Modulo en construccion: Reporte Historial]\n");
+                LimpiarPantalla();
+                Mostrar_Reporte(historial, cant_historial);
                 break;
             case 6:
                 printf("\nSaliendo del simulador de vuelo...\n");
