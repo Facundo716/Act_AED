@@ -1,4 +1,3 @@
-// Probando el main 
 #include <stdio.h>
 #include <stdbool.h>
 #include "artemis.h"
@@ -17,10 +16,9 @@ void Menu() {
 
 int main() {
     int opcion;
-    bool datos_cargados = false; // Variable bandera para el control del program 
-    Estado_Orion nave; // Variable temporal para testear la carga de datos .. 
+    bool datos_cargados = false; 
+    Estado_Orion nave; 
     
-    // DECLARACIONES AGREGADAS PARA EL HISTORIAL
     Estado_Orion historial[MAX_HISTORIAL]; 
     int cant_historial = 0;
 
@@ -28,7 +26,6 @@ int main() {
 
     do {
         Menu();
-        // Lectura temporal... Luego se tiene que reemplazar x leerEntero(1, 6)
         opcion = leerEntero(1, 6); 
     
         switch (opcion) {
@@ -36,7 +33,6 @@ int main() {
                 LimpiarPantalla();
                 printf("\n--- CARGA DE PARAMETROS ---\n");
 
-                // Uso de la funcion LeerFlotante y evitamos ingresos de ceros y letras 
                 printf("Tiempo de desaceleracion (s): ");
                 nave.t_desacel = leerFlotante(0.0, 5000.0); 
 
@@ -52,7 +48,7 @@ int main() {
             case 2:
                 LimpiarPantalla();
                 if (datos_cargados) {
-                    Calcular_Trabajo(&nave); // <- PUNTO Y COMA AGREGADO
+                    Calcular_Trabajo(&nave);
                     Guardar_Historial(historial, &cant_historial, nave);
                 } else {
                     printf("\nError: Debe ingresar parametros primero (Opcion 1).\n");
@@ -69,7 +65,7 @@ int main() {
             case 4:
                 LimpiarPantalla();
                 if (datos_cargados) {
-                    Evaluar_Angulo(nave); // Usamos el paso por valor 
+                    Evaluar_Angulo(nave); 
                 } else {
                     printf("\nError: Debe ingresar parametros primero (Opcion 1).\n");
                 }
@@ -84,6 +80,10 @@ int main() {
             default:
                 printf("\nOpcion invalida. Intente nuevamente.\n");
         }
+    } while (opcion != 6);
+
+    return 0;
+}
     } while (opcion != 6);
 
     return 0;
