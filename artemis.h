@@ -25,6 +25,6 @@ void Fuerza_Impacto(Estado_Orion *nave);
 void Evaluar_Angulo(Estado_Orion nave);
 // Nuevas funciones 
 void Guardar_Historial(Estado_Orion historial[], int *cant, Estado_Orion nave);
-void Mostrar_Reporte(Estado_Orion historial[], int cant); // <- PUNTO Y COMA AGREGADO
+void Mostrar_Reporte(Estado_Orion historial[], int cant);
 
 #endif
