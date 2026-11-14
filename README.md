@@ -1,5 +1,9 @@
 # Simulador Artemis: Escenario 4 🚀
 
+## 👥 Equipo de Desarrollo y Comisión
+* **Integrantes**: Alan Aguirre, Facundo Ferreyra, Gonzalo Ferreyra
+* **Comisión**: Noche (1.4) 
+
 Proyecto desarrollado en C para simular el reingreso atmosférico y acuatizaje de la cápsula espacial Orion (Misión Artemis). Este programa calcula parámetros físicos críticos, valida estrictamente las entradas del usuario y mantiene un historial de simulaciones en memoria.
 
 ## ⚙️ Características y Módulos
