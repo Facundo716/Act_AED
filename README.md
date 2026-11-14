@@ -9,6 +9,19 @@ Proyecto desarrollado en C para simular el reingreso atmosférico y acuatizaje d
 * **Evaluación de Ángulo**: Verifica si el ángulo de reingreso se encuentra dentro de la ventana óptima de seguridad (5.5° - 7.0°).
 * **Historial de Simulaciones**: Almacena temporalmente (mediante arreglos y punteros) hasta 10 intentos de simulación para generar un reporte comparativo final.
 
+## Breve Detalle de Funcionamiento
+
+El programa está estructurado utilizando el principio de diseño descendente (Top-Down) y modularización en lenguaje C.
+El flujo principal es orquestado por un ciclo do-while interactivo en main.c. La lógica matemática y el motor físico están aislados en el módulo artemis.c (con su respectivo .h), mientras que el blindaje contra errores de tipeo del usuario (como ingresar letras en lugar de números o valores nulos que provoquen divisiones por cero) se gestiona desde el módulo independiente validaciones.c. Los datos históricos se manejan en memoria interna a través de un arreglo de registros (struct).
+
+## Registro Detallado del Uso de Inteligencia Artificial
+
+Durante el ciclo de desarrollo de este proyecto, se utilizó asistencia de Inteligencia Artificial (Gemini) con los siguientes propósitos:
+
+Resolución de Conflictos en Git: Asistencia para identificar y limpiar marcadores de control de versiones.
+Refactorización de Código: Apoyo para aislar funciones en módulos .c y .h independientes, mejorando la arquitectura del proyecto.
+Preparación de Presentación: Generación de assets visuales (fondos para diapositivas).
+
 ## 🛠️ Compilación y Ejecución
 El proyecto incluye un archivo `Makefile` para facilitar su compilación en entornos compatibles.
 
